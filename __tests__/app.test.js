@@ -35,4 +35,28 @@ describe('demo routes', () => {
     const res = await request(app).get(`/api/v1/beers/${beer.id}`);
     expect(res.body).toEqual(beer);
   });
+
+  it('finds all beers via GET', async () => {
+    const rainier = await Beer.insert({
+      name: 'rainier',
+      abv: '4.8%',
+      color: 'clear as the mountain snow of mount rainier'
+    });
+    
+    const modelo = await Beer.insert({
+      name: 'modelo',
+      abv: '4.5%',
+      color: 'pale'
+    });
+    
+    const heineken = await Beer.insert({
+      name: 'heineken',
+      abv: '4.2%',
+      color: 'pale'
+    });
+
+    const res = await request(app).get('/api/v1/beers');
+    expect(res.body).toEqual([rainier, modelo, heineken]);
+  });
 });
+
