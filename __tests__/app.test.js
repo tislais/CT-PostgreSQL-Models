@@ -58,5 +58,23 @@ describe('demo routes', () => {
     const res = await request(app).get('/api/v1/beers');
     expect(res.body).toEqual([rainier, modelo, heineken]);
   });
+
+  it('updates a beer by id via PUT', async () => {
+    const rainier = await Beer.insert({
+      name: 'rainier',
+      abv: '4.8%',
+      color: 'clear as the mountain snow of mount rainier'
+    });
+    
+    const updatedRainier = {
+      id: 1,
+      name: 'rainierv2',
+      abv: '4.8%',
+      color: 'clear as the mountain snow of mount rainier'
+    };
+
+    const res = await request(app).put(`/api/v1/beers/${rainier.id}`).send(updatedRainier);
+    expect(res.body).toEqual(updatedRainier);
+  });
 });
 
