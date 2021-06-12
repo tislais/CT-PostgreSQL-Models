@@ -36,5 +36,22 @@ describe('Cube routes', () => {
     expect(res.body).toEqual(cube);
   });
 
+  it('finds all cubes via GET', async () => {
+    const squareOne = await Cube.insert({
+      name: 'square-1',
+      dimensions: 'irregular',
+      price: '$24'
+    });
+
+    const megaminx = await Cube.insert({
+      name: 'megaminx',
+      dimensions: 'irregular',
+      price: '$32'
+    });
+
+    const res = await request(app).get('/api/v1/cubes');
+    expect(res.body).toEqual([squareOne, megaminx]);
+  });
+
 });
 
