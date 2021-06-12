@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS beers, cubes;
+DROP TABLE IF EXISTS beers, cubes, movies;
 
 CREATE TABLE beers (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -12,4 +12,11 @@ CREATE TABLE cubes (
   name TEXT NOT NULL,
   dimensions TEXT NOT NULL,
   price TEXT
+);
+
+CREATE TABLE movies (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  title TEXT NOT NULL,
+  genre TEXT NOT NULL,
+  rating TEXT
 );
