@@ -4,7 +4,7 @@ import request from 'supertest';
 import app from '../lib/app.js';
 import Beer from '../lib/models/Beer.js';
 
-describe('demo routes', () => {
+describe('Beer routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
