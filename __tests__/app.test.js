@@ -76,5 +76,19 @@ describe('demo routes', () => {
     const res = await request(app).put(`/api/v1/beers/${rainier.id}`).send(updatedRainier);
     expect(res.body).toEqual(updatedRainier);
   });
+
+  it('deletes a beer by ida via DELETE', async () => {
+    const rainier = await Beer.insert({
+      name: 'rainier',
+      abv: '4.8%',
+      color: 'clear as the mountain snow of mount rainier'
+    });
+
+    const res = await request(app)
+      .delete(`/api/v1/beers/${rainier.id}`)
+      .send(rainier);
+
+    expect(res.body).toEqual(rainier);
+  });
 });
 
