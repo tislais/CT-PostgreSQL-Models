@@ -24,4 +24,16 @@ describe('Movie routes', () => {
       rating: '8.0'
     });
   });
+ 
+  it('finds a movie by id via GET', async () => {
+    const movie = await Movie.insert({
+      title: 'burial ground',
+      genre: 'horror',
+      rating: '5.7'
+    });
+    const res = await request(app).get(`/api/v1/movies/${movie.id}`);
+    
+    expect(res.body).toEqual(movie);
+  });
+
 });

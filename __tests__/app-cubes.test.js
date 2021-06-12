@@ -32,6 +32,7 @@ describe('Cube routes', () => {
       price: '$18'
     });
     const res = await request(app).get(`/api/v1/cubes/${cube.id}`);
+    
     expect(res.body).toEqual(cube);
   });
 
