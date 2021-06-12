@@ -61,6 +61,7 @@ describe('Cube routes', () => {
     });
 
     const updatedMegaminx = {
+      id: 1,
       name: 'megaminx',
       dimensions: 'irregular',
       price: '$26'

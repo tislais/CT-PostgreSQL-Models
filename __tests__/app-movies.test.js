@@ -9,7 +9,7 @@ describe('Movie routes', () => {
     return setup(pool);
   });
 
-  it('creates a movie via POST', async () => {
+  it.skip('creates a movie via POST', async () => {
     const res = await request(app)
       .post('/api/v1/movies')
       .send({
