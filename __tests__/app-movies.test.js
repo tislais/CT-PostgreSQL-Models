@@ -36,4 +36,21 @@ describe('Movie routes', () => {
     expect(res.body).toEqual(movie);
   });
 
+  it('finds all movies via GET', async () => {
+    const movie1 = await Movie.insert({
+      title: 'planet of the apes',
+      genre: 'science fiction',
+      rating: '8.9'
+    });
+
+    const movie2 = await Movie.insert({
+      title: 'burial ground',
+      genre: 'horror',
+      rating: '5.6'
+    });
+
+    const res = await request(app).get('/api/v1/movies');
+    expect(res.body).toEqual([movie1, movie2]);
+  });
+
 });
