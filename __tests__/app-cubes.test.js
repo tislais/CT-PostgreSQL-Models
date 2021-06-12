@@ -3,8 +3,6 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 import Cube from '../lib/models/Cube.js';
-import Movie from '../lib/models/Movie.js';
-//import Cube from '../lib/models/Cube.js';
 
 describe('Cube routes', () => {
   beforeEach(() => {
