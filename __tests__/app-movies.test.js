@@ -53,4 +53,23 @@ describe('Movie routes', () => {
     expect(res.body).toEqual([movie1, movie2]);
   });
 
+  it('updates a movie by id via PUT', async () => {
+    const movie = await Movie.insert({
+      title: 'burial ground',
+      genre: 'horror',
+      rating: '5.6'
+    });
+
+    const updatedMovie = {
+      id: 1,
+      title: 'burial ground',
+      genre: 'horror',
+      rating: '5.7'
+    };
+
+    const res = await request(app).put(`/api/v1/movies/${movie.id}`).send(updatedMovie);
+
+    expect(res.body).toEqual(updatedMovie);
+  });
+
 });

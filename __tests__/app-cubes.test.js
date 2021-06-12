@@ -32,7 +32,7 @@ describe('Cube routes', () => {
       price: '$18'
     });
     const res = await request(app).get(`/api/v1/cubes/${cube.id}`);
-    
+
     expect(res.body).toEqual(cube);
   });
 
@@ -68,6 +68,7 @@ describe('Cube routes', () => {
     };
 
     const res = await request(app).put(`/api/v1/cubes/${megaminx.id}`).send(updatedMegaminx);
+    
     expect(res.body).toEqual(updatedMegaminx);
   });
 
