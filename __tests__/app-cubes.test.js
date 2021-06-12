@@ -53,5 +53,22 @@ describe('Cube routes', () => {
     expect(res.body).toEqual([squareOne, megaminx]);
   });
 
+  it('updates a cube by id via PUT', async () => {
+    const megaminx = await Cube.insert({
+      name: 'megaminx',
+      dimensions: 'irregular',
+      price: '$32'
+    });
+
+    const updatedMegaminx = {
+      name: 'megaminx',
+      dimensions: 'irregular',
+      price: '$26'
+    };
+
+    const res = await request(app).put(`/api/v1/cubes/${megaminx.id}`).send(updatedMegaminx);
+    expect(res.body).toEqual(updatedMegaminx);
+  });
+
 });
 
