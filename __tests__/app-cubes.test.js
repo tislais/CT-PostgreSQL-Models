@@ -3,6 +3,7 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 import Cube from '../lib/models/Cube.js';
+import Movie from '../lib/models/Movie.js';
 //import Cube from '../lib/models/Cube.js';
 
 describe('Cube routes', () => {
@@ -69,6 +70,20 @@ describe('Cube routes', () => {
 
     const res = await request(app).put(`/api/v1/cubes/${megaminx.id}`).send(updatedMegaminx);
     expect(res.body).toEqual(updatedMegaminx);
+  });
+
+  it('deletes a cube by id via DELETE', async () => {
+    const cube = await Cube.insert({
+      name: 'megaminx',
+      dimensions: 'irregular',
+      price: '$24'
+    });
+
+    const res = await request(app)
+      .delete(`/api/v1/cubes/${cube.id}`)
+      .send(cube);
+
+    expect(res.body).toEqual(cube); 
   });
 
 });

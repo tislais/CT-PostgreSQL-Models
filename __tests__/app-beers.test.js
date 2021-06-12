@@ -76,7 +76,7 @@ describe('Beer routes', () => {
     expect(res.body).toEqual(updatedRainier);
   });
 
-  it('deletes a beer by ida via DELETE', async () => {
+  it('deletes a beer by id via DELETE', async () => {
     const rainier = await Beer.insert({
       name: 'rainier',
       abv: '4.8%',
