@@ -72,4 +72,18 @@ describe('Movie routes', () => {
     expect(res.body).toEqual(updatedMovie);
   });
 
+  it('deletes a movie by id via DELETE', async () => {
+    const movie = await Movie.insert({
+      title: 'burial ground',
+      genre: 'horror',
+      rating: '5.6'
+    });
+
+    const res = await request(app)
+      .delete(`/api/v1/movies/${movie.id}`)
+      .send(movie);
+
+    expect(res.body).toEqual(movie);
+  });
+
 });
