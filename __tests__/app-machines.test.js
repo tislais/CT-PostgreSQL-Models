@@ -27,5 +27,16 @@ describe('Machine routes', () => {
     });
   });
 
+  it('finds a machine by id via GET', async () => {
+    const machine = await Machine.insert({
+      title: 'attack from mars',
+      manufacturer: 'bally',
+      type: 'solid state'
+    });
+    const res = await request(app).get(`/api/v1/machines/${machine.id}`);
+
+    expect(res.body).toEqual(machine);
+  });
+
 
 });
