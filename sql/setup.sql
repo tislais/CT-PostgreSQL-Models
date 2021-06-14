@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS beers, cubes, movies, machines;
+DROP TABLE IF EXISTS beers, cubes, movies, machines, albums;
 
 CREATE TABLE beers (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
