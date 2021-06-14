@@ -51,7 +51,7 @@ describe('Machine routes', () => {
       type: 'solid state'
     });
 
-    const res = await request(app).get('/api/v1/movies');
+    const res = await request(app).get('/api/v1/machines');
     expect(res.body).toEqual([machine1, machine2]);
   });
 
