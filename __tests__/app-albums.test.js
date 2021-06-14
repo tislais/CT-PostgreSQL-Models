@@ -9,4 +9,21 @@ describe('Movie routes', () => {
     return setup(pool);
   });
 
+  it('creates an album via POST', async () => {
+    const res = await request(app)
+      .post('/api/m1/albums')
+      .send({
+        title: '1986',
+        artist: 'one last wish',
+        genre: 'post-hardcore'
+      });
+
+    expect(res.body).toEqual({
+      id: 1,
+      title: '1986',
+      artist: 'one last wish',
+      genre: 'post-hardcore'
+    });
+  });
+
 });

@@ -27,3 +27,10 @@ CREATE TABLE machines (
   manufacturer TEXT NOT NULL,
   type TEXT
 );
+
+CREATE TABLE albums (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  title TEXT NOT NULL,
+  artist TEXT NOT NULL,
+  genre TEXT
+);
