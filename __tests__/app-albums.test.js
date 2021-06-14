@@ -37,4 +37,21 @@ describe('Album routes', () => {
     expect(res.body).toEqual(album);
   });
 
+  it('finds all albums via GET', async () => {
+    const album1 = await Album.insert({
+      title: '1986',
+      artist: 'one last wish',
+      genre: 'post-hardcore'
+    });
+
+    const album2 = await Album.insert({
+      title: 'volume 1',
+      artist: 'magic sword',
+      genre: 'dark synthwave'
+    });
+
+    const res = await request(app).get('/api/v1/albums');
+    expect(res.body).toEqual([album1, album2]);
+  });
+
 });
