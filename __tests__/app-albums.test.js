@@ -72,4 +72,18 @@ describe('Album routes', () => {
     expect(res.body).toEqual(updatedAlbum);
   });
 
+  it('deletes an album by id via DELETE', async () => {
+    const album = await Album.insert({
+      title: 'volume 1',
+      artist: 'magic sword',
+      genre: 'dark synthwave'
+    });
+
+    const res = await request(app)
+      .delete(`/api/v1/albums/${album.id}`)
+      .send(album);
+
+    expect(res.body).toEqual(album);
+  });
+
 });
