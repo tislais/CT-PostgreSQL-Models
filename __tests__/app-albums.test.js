@@ -62,12 +62,13 @@ describe('Album routes', () => {
     });
 
     const updatedAlbum = {
+      id: 1,
       title: 'volume 2',
       artist: 'magic sword',
       genre: 'dark synthwave'
     };
 
-    const res = await request(app).put(`/api/v1/albums/${album.id}`);
+    const res = await request(app).put(`/api/v1/albums/${album.id}`).send(updatedAlbum);
     expect(res.body).toEqual(updatedAlbum);
   });
 
