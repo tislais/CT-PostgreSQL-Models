@@ -61,7 +61,9 @@ describe('Machine routes', () => {
       manufacturer: 'bally',
       type: 'solid state'
     });
+
     const updatedMachine = {
+      id: 1,
       title: 'attack from mars',
       manufacturer: 'williams',
       type: 'solid state'
