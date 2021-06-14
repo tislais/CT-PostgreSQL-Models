@@ -3,7 +3,6 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 import Machine from '../lib/models/Machine.js';
-import { response } from 'express';
 
 describe('Machine routes', () => {
   beforeEach(() => {
@@ -82,7 +81,7 @@ describe('Machine routes', () => {
     });
 
     const res = await request(app)
-      .delete(`/api/v1/${machine.id}`)
+      .delete(`/api/v1/machines/${machine.id}`)
       .send(machine);
 
     expect(res.body).toEqual(machine);
