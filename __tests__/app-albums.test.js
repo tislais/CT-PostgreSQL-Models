@@ -26,4 +26,15 @@ describe('Album routes', () => {
     });
   });
 
+  it('finds an album by id via GET', async () => {
+    const album = await Album.insert({
+      title: '1986',
+      artist: 'one last wish',
+      genre: 'post-hardcore'
+    });
+    const res = await request(app).get(`/api/v1/albums/${album.id}`);
+
+    expect(res.body).toEqual(album);
+  });
+
 });
