@@ -54,4 +54,21 @@ describe('Album routes', () => {
     expect(res.body).toEqual([album1, album2]);
   });
 
+  it('updates an album by id via PUT', async () => {
+    const album = await Album.insert({
+      title: 'volume 1',
+      artist: 'magic sword',
+      genre: 'dark synthwave'
+    });
+
+    const updatedAlbum = {
+      title: 'volume 2',
+      artist: 'magic sword',
+      genre: 'dark synthwave'
+    };
+
+    const res = await request(app).put(`/api/v1/albums/${album.id}`);
+    expect(res.body).toEqual(updatedAlbum);
+  });
+
 });
