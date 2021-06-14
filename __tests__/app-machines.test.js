@@ -11,7 +11,7 @@ describe('Machine routes', () => {
   });
 
   it('creates a machine via POST', async () => {
-    const res = await response(app)
+    const res = await request(app)
       .post('/api/v1/machines')
       .send({
         title: 'attack from mars',
@@ -26,4 +26,6 @@ describe('Machine routes', () => {
       type: 'solid state'
     });
   });
+
+
 });
