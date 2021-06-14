@@ -55,5 +55,22 @@ describe('Machine routes', () => {
     expect(res.body).toEqual([machine1, machine2]);
   });
 
+  it('updates a machine by id via PUT', async () => {
+    const machine = await Machine.insert({
+      title: 'attack from mars',
+      manufacturer: 'bally',
+      type: 'solid state'
+    });
+    const updatedMachine = {
+      title: 'attack from mars',
+      manufacturer: 'williams',
+      type: 'solid state'
+    };
+
+    const res = await request(app).put(`/api/v1/machines/${machine.id}`).send(updatedMachine);
+
+    expect(res.body).toEqual(updatedMachine);
+  });
+
 
 });
