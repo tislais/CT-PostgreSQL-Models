@@ -74,5 +74,19 @@ describe('Machine routes', () => {
     expect(res.body).toEqual(updatedMachine);
   });
 
+  it('deletes a machine by id via DELETE', async () => {
+    const machine = await Machine.insert({
+      title: 'attack from mars',
+      manufacturer: 'bally',
+      type: 'solid state'
+    });
+
+    const res = await request(app)
+      .delete(`/api/v1/${machine.id}`)
+      .send(machine);
+
+    expect(res.body).toEqual(machine);
+  });
+
 
 });
