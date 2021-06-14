@@ -38,5 +38,22 @@ describe('Machine routes', () => {
     expect(res.body).toEqual(machine);
   });
 
+  it('finds all machines via GET', async () => {
+    const machine1 = await Machine.insert({
+      title: 'attack from mars',
+      manufacturer: 'bally',
+      type: 'solid state'
+    });
+
+    const machine2 = await Machine.insert({
+      title: 'the addams family',
+      manufacturer: 'williams',
+      type: 'solid state'
+    });
+
+    const res = await request(app).get('/api/v1/movies');
+    expect(res.body).toEqual([machine1, machine2]);
+  });
+
 
 });
